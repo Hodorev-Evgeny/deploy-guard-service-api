@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-package deployguard.domain.v1;
+package domain;
+
+option go_package = "github.com/Hodorev-Evgeny/deploy-guard-service-grpc/api/domain;domain";
 
 import "google/protobuf/timestamp.proto";
 

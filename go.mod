@@ -1,3 +1,3 @@
-module deploy-guard-service-grpc
+module https://github.com/Hodorev-Evgeny/deploy-guard-service-api
 
 go 1.26

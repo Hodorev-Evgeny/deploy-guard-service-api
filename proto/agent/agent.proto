@@ -1,47 +1,49 @@
 syntax = "proto3";
 
-package deployguard.agent.v1;
+package agent;
 
+option go_package = "github.com/Hodorev-Evgeny/deploy-guard-service-grpc/api/agent;agent";
+
+import "domain/server.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
-import "domain/server.proto";
 import "domain/project.proto";
 
 
 service AgentService {
-  rpc IndicatorServer(deployguard.domain.v1.ServerID) returns (deployguard.domain.v1.MainIndicator) {}
+  rpc IndicatorServer(domain.ServerID) returns (domain.MainIndicator) {}
 
-  rpc AddProjectInServer(RequestAddProject) returns (deployguard.domain.v1.ResponseProject) {}
+  rpc AddProjectInServer(RequestAddProject) returns (domain.ResponseProject) {}
 
-  rpc StartProject(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+  rpc StartProject(RequestEventProject) returns (domain.ResponseProject) {}
 
-  rpc StopProject(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+  rpc StopProject(RequestEventProject) returns (domain.ResponseProject) {}
 
-  rpc GetLogsProject(deployguard.domain.v1.LogProjectEnvironment) returns (stream LogInformation) {}
+  rpc GetLogsProject(domain.LogProjectEnvironment) returns (stream LogInformation) {}
 
-  rpc Healthcheck(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+  rpc Healthcheck(RequestEventProject) returns (domain.ResponseProject) {}
 
-  rpc DeployNewVersion(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+  rpc DeployNewVersion(RequestEventProject) returns (domain.ResponseProject) {}
 
-  rpc Rollback(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+  rpc Rollback(RequestEventProject) returns (domain.ResponseProject) {}
 
-  rpc GetStatusProject(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+  rpc GetStatusProject(RequestEventProject) returns (domain.ResponseProject) {}
 
   rpc GetToken(google.protobuf.Empty) returns (Token) {}
 }
 
 message RequestAddProject {
-  deployguard.domain.v1.ProjectEnvironment project_environment = 1;
-  deployguard.domain.v1.ServerID server_id = 2;
+  domain.ProjectEnvironment project_environment = 1;
+  domain.ServerID server_id = 2;
 }
 
 message RequestEventProject {
-  deployguard.domain.v1.ProjectID project_id = 1;
-  deployguard.domain.v1.ServerID server_id = 2;
+  domain.ProjectID project_id = 1;
+  domain.ServerID server_id = 2;
 }
 
 message LogInformation {
-  deployguard.domain.v1.ProjectID project_id = 1;
+  domain.ProjectID project_id = 1;
   string log_info = 2;
   google.protobuf.Timestamp date_log = 3;
   string source = 4;
