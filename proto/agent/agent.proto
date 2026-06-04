@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package deployguard.agent.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "domain/server.proto";
+import "domain/project.proto";
+
+
+service AgentService {
+  rpc IndicatorServer(deployguard.domain.v1.ServerID) returns (deployguard.domain.v1.MainIndicator) {}
+
+  rpc AddProjectInServer(RequestAddProject) returns (deployguard.domain.v1.ResponseProject) {}
+
+  rpc StartProject(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+
+  rpc StopProject(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+
+  rpc GetLogsProject(deployguard.domain.v1.LogProjectEnvironment) returns (stream LogInformation) {}
+
+  rpc Healthcheck(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+
+  rpc DeployNewVersion(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+
+  rpc Rollback(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+
+  rpc GetStatusProject(RequestEventProject) returns (deployguard.domain.v1.ResponseProject) {}
+
+  rpc GetToken(google.protobuf.Empty) returns (Token) {}
+}
+
+message RequestAddProject {
+  deployguard.domain.v1.ProjectEnvironment project_environment = 1;
+  deployguard.domain.v1.ServerID server_id = 2;
+}
+
+message RequestEventProject {
+  deployguard.domain.v1.ProjectID project_id = 1;
+  deployguard.domain.v1.ServerID server_id = 2;
+}
+
+message LogInformation {
+  deployguard.domain.v1.ProjectID project_id = 1;
+  string log_info = 2;
+  google.protobuf.Timestamp date_log = 3;
+  string source = 4;
+  bool has_error = 5;
+}
+
+message Token {
+  string token_server = 1;
+}

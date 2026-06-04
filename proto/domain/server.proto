@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package deployguard.domain.v1;
+
+import "google/protobuf/timestamp.proto";
+
+enum ServerStatus {
+  SERVER_STATUS_UNSPECIFIED = 0;
+  SERVER_STATUS_ONLINE = 1;
+  SERVER_STATUS_OFFLINE = 2;
+  SERVER_STATUS_WARNING = 3;
+  SERVER_STATUS_UNKNOWN = 4;
+  SERVER_STATUS_DISABLED = 5;
+}
+
+message ServerID {
+  int64 id = 1;
+}
+
+message MainIndicator {
+  string name_server = 1;
+  ServerStatus status = 2;
+  google.protobuf.Timestamp last_connect = 3;
+  float cpu_used = 4;
+  float ram_used = 5;
+  float disk_used = 6;
+  int64 count_project = 7;
+  int64 count_problem = 8;
+}

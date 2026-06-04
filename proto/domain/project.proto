@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package deployguard.domain.v1;
+
+import "google/protobuf/timestamp.proto";
+import "domain/server.proto";
+
+enum ProjectStatus {
+  PROJECT_STATUS_UNSPECIFIED = 0;
+  PROJECT_STATUS_RUNNING = 1;
+  PROJECT_STATUS_STOPPED = 2;
+  PROJECT_STATUS_DEPLOYING = 3;
+  PROJECT_STATUS_FAILED = 4;
+  PROJECT_STATUS_UNKNOWN = 5;
+  PROJECT_STATUS_ROLLBACK = 6;
+}
+
+message ProjectID {
+  int64 id = 1;
+}
+
+message ResponseProject {
+  string name_project = 1;
+  ProjectID project_id = 2;
+  google.protobuf.Timestamp time_event = 3;
+  ProjectStatus status = 4;
+}
+
+message ProjectEnvironment {
+  string path_github = 1;
+  string branch = 2;
+
+}
+
+message LogProjectEnvironment {
+  ProjectID project_id = 1;
+  ServerID server_id = 2;
+  string path = 3;
+}
