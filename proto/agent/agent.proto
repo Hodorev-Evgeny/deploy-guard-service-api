@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package agent;
 
-option go_package = "github.com/Hodorev-Evgeny/deploy-guard-service-grpc/api/agent;agent";
+option go_package = "github.com/Hodorev-Evgeny/deploy-guard-service-api/api/agent;agent";
 
 import "domain/server.proto";
 import "google/protobuf/empty.proto";

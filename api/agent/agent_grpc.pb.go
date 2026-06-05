@@ -8,7 +8,7 @@ package agent
 
 import (
 	context "context"
-	domain "github.com/Hodorev-Evgeny/deploy-guard-service-grpc/api/domain"
+	domain "github.com/Hodorev-Evgeny/deploy-guard-service-api/api/domain"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

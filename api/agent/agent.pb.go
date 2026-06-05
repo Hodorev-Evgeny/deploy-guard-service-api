@@ -7,7 +7,7 @@
 package agent
 
 import (
-	domain "github.com/Hodorev-Evgeny/deploy-guard-service-grpc/api/domain"
+	domain "github.com/Hodorev-Evgeny/deploy-guard-service-api/api/domain"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -279,7 +279,7 @@ const file_agent_agent_proto_rawDesc = "" +
 	"\x10DeployNewVersion\x12\x1a.agent.RequestEventProject\x1a\x17.domain.ResponseProject\"\x00\x12A\n" +
 	"\bRollback\x12\x1a.agent.RequestEventProject\x1a\x17.domain.ResponseProject\"\x00\x12I\n" +
 	"\x10GetStatusProject\x12\x1a.agent.RequestEventProject\x1a\x17.domain.ResponseProject\"\x00\x122\n" +
-	"\bGetToken\x12\x16.google.protobuf.Empty\x1a\f.agent.Token\"\x00BEZCgithub.com/Hodorev-Evgeny/deploy-guard-service-grpc/api/agent;agentb\x06proto3"
+	"\bGetToken\x12\x16.google.protobuf.Empty\x1a\f.agent.Token\"\x00BDZBgithub.com/Hodorev-Evgeny/deploy-guard-service-api/api/agent;agentb\x06proto3"
 
 var (
 	file_agent_agent_proto_rawDescOnce sync.Once
